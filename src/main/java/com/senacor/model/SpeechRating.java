@@ -2,45 +2,79 @@ package com.senacor.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.hateoas.ResourceSupport;
+
+import java.io.Serializable;
+import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 
 /**
  * Created by Marynasuprun on 10.01.2017.
  */
-@Document
-public class SpeechRating {
+@Document(collection = "speechRating")
+public class SpeechRating extends ResourceSupport implements Serializable {
 
     @Id
-    private String userId;
-    private String speechId;
-    private int rating;
+    UUID speechRatingId;
+
+    private Speech speech;
+    private NaturalPerson naturalPerson;
+    private LocalTime timestamp;
+    private Integer rating;
+    private String comment;
 
     public SpeechRating() {
-
+        speechRatingId = UUID.randomUUID();
     }
 
-    public String getUserId() {
-        return userId;
+    public UUID getSpeechRatingId() {
+        return speechRatingId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setSpeechRatingId(UUID speechRatingId) {
+        this.speechRatingId = speechRatingId;
     }
 
-    public int getRating() {
+    public Speech getSpeech() {
+        return speech;
+    }
+
+    public void setSpeech(Speech speech) {
+        this.speech = speech;
+    }
+
+    public NaturalPerson getNaturalPerson() {
+        return naturalPerson;
+    }
+
+    public void setNaturalPerson(NaturalPerson naturalPerson) {
+        this.naturalPerson = naturalPerson;
+    }
+
+    public LocalTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
-    public String getSpeechId() {
-        return speechId;
+    public String getComment() {
+        return comment;
     }
 
-    public void setSpeechId(String speechId) {
-        this.speechId = speechId;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
-
-
 }

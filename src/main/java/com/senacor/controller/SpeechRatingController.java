@@ -1,5 +1,6 @@
 package com.senacor.controller;
 
+import com.senacor.model.SpeechRating;
 import com.senacor.service.SpeechRatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,20 +11,31 @@ import org.springframework.web.bind.annotation.*;
  * Created by Marynasuprun on 10.01.2017.
  */
 @RestController
-@RequestMapping("/speechRating")
+@RequestMapping("/rating")
 public class SpeechRatingController {
 
     SpeechRatingService speechRatingService;
+
 
     @Autowired
     public SpeechRatingController(SpeechRatingService speechRatingService) {
         this.speechRatingService = speechRatingService;
     }
 
-    @RequestMapping(value = "/{speechId}", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void rateSpeech(@PathVariable("speechId") String speechId, @RequestParam("rating") int individualRating) {
+    @RequestMapping(value = "/{speechId}/{userId}", method = RequestMethod.GET)
+    public ResponseEntity<SpeechRating> getSpeechRating(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId) {
+        SpeechRating speechRating = speechRatingService.getRating(userId, speechId);
+        return new ResponseEntity<SpeechRating>(speechRating, HttpStatus.OK);
+    }
 
+
+
+    @RequestMapping(value = "/{speechId}/{userId}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void rateSpeech(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId,
+                           @RequestBody SpeechRating speechRating) {
+
+        speechRatingService.addRating(speechRating, speechId, userId);
     }
 
     }

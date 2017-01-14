@@ -1,0 +1,17 @@
+Use rating
+
+db.naturalPerson.insertMany(
+    [
+        {_id: "100", firstname: "Saba", lastname:"Kues", email:"saba@htw-berlin.de", titel:"Dr.", position:"developper", userId:"10"},
+        {_id: "101", firstname: "Maryna", lastname:"Fehler", email:"maryna@htw-berlin.de", titel:"Dr.", position:"developper",  userId:"11"},
+        {_id: "102", firstname: "Katharina", lastname:"Papke", email:"katharina@htw-berlin.de", titel:"Dr.", position:"developper", userId:"12"},
+        {_id: "103", firstname: "Veronika", lastname:"Babic", email:"vero@htw-berlin.de", titel:"Dr.", position:"scrum-master",  userId:"13"},
+        {_id: "104", firstname: "Nadia", lastname:"Missner", email:"nadia@htw-berlin.de", titel:"Dr.", position:"product-owner", userId:"14"},
+        {_id: "105", firstname: "Hannes", lastname:"Schroeder", email:"hannes@htw-berlin.de", titel:"Dr.", position:"senior-developper", userId:"15"},
+        {_id: "106", firstname: "Richard", lastname:"Mueller", email:"richard@htw-berlin.de", titel:"Dr.", position:"manager", userId:"16"},
+        {_id: "107", firstname: "Onur", lastname:"Yavuz", email:"onur@htw-berlin.de", titel:"Dr.", position:"Prof", userId:"17"},
+        {_id: "108", firstname: "Juliane", lastname:"Siegeris", email:"juliane@htw-berlin.de", titel:"Dr.", position:"Prof", userId:"18"},
+        {_id: "109", firstname: "Jörg", lastname:"Freiheit", email:"joerg@htw-berlin.de", titel:"Dr.", position:"Prof", userId:"19"}
+     ]
+ )
+

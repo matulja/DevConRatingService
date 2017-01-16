@@ -1,6 +1,10 @@
 package com.senacor.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.bson.types.ObjectId;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +15,7 @@ import java.util.List;
  * Created by saba on 10.01.17.
  */
 @Document (collection = "speech")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Speech {
 
 
@@ -26,17 +31,8 @@ public class Speech {
     private String eventID;
 
 
-/*
-    Objekte werden dann von Werten wie folgt gebildet:LocalDate.of(2012, Month.DECEMBER, 12); // from values
-     */
-
-    public Speech(String eventID) {
-        this.eventID=eventID;
-        this.speechId = ObjectId.get().toString();
-    }
-
     public Speech() {
-        this.speechId = ObjectId.get().toString();
+
     }
 
     public void setSpeechId(String speechId) {

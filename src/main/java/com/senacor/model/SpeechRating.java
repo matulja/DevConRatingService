@@ -1,5 +1,6 @@
 package com.senacor.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.hateoas.ResourceSupport;
@@ -18,9 +19,10 @@ import java.util.UUID;
 public class SpeechRating extends ResourceSupport implements Serializable {
 
     @Id
-    UUID speechRatingId;
-
+    private UUID speechRatingId;
+    @JsonIgnore
     private Speech speech;
+    @JsonIgnore
     private NaturalPerson naturalPerson;
     private LocalTime timestamp;
     private Integer rating;

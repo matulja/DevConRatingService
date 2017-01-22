@@ -1,6 +1,6 @@
 Use rating
 
-db.naturalPerson.insertMany(
+db.getCollection('naturalPerson').insertMany(
     [
         {_id: "100", firstname: "Saba", lastname:"Kues", email:"saba@htw-berlin.de", titel:"Dr.", position:"developper", userId:"10"},
         {_id: "101", firstname: "Maryna", lastname:"Fehler", email:"maryna@htw-berlin.de", titel:"Dr.", position:"developper",  userId:"11"},

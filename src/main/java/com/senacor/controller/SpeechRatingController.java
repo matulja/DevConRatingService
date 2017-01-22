@@ -24,7 +24,9 @@ public class SpeechRatingController {
 
     @RequestMapping(value = "/{speechId}/{userId}", method = RequestMethod.GET)
     public ResponseEntity<SpeechRating> getSpeechRating(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId) {
+        System.out.println("in get speechrating controller");
         SpeechRating speechRating = speechRatingService.getRating(userId, speechId);
+        System.out.println("speech rating: " + speechRating.getRating() + " for userId " + userId);
         return new ResponseEntity<SpeechRating>(speechRating, HttpStatus.OK);
     }
 

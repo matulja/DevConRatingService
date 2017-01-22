@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SpeechRepository extends MongoRepository<Speech, String> {
+
+    Speech findBySpeechId(String speechId);
 }

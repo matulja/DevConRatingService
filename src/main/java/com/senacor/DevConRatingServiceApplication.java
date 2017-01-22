@@ -36,7 +36,7 @@ public class DevConRatingServiceApplication implements CommandLineRunner {
 		speechRepository.deleteAll();*/
 
 		List<SpeechRating>speechRatings = speechRatingRepository.findBySpeech(speechRepository.findBySpeechId("588511dc06d4cd204870e090"));
-		
+
 		for (SpeechRating speechRating: speechRatings) {
 			speechRating.setRating(3);
 			speechRatingRepository.save(speechRating);

@@ -1,6 +1,7 @@
 package com.senacor.service;
 
 
+import com.senacor.controller.SpeechRatingController;
 import com.senacor.model.NaturalPerson;
 import com.senacor.model.Speech;
 import com.senacor.model.SpeechRating;
@@ -8,10 +9,13 @@ import com.senacor.repository.NaturalPersonRepository;
 import com.senacor.repository.SpeechRatingRepository;
 import com.senacor.repository.SpeechRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 /**
  * Created by Marynasuprun on 10.01.2017.
@@ -64,7 +68,9 @@ public class SpeechRatingService {
             }
 
         }
-
+        Link selflink = linkTo(SpeechRatingController.class).slash(naturalPerson.getUserId() + "/"
+                + speechRating.getSpeechRatingId().toString()).withSelfRel();
+        speechRating.add(selflink);
         return speechRating;
     }
 

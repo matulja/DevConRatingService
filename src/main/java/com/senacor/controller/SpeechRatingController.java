@@ -22,8 +22,8 @@ public class SpeechRatingController {
         this.speechRatingService = speechRatingService;
     }
 
-    @RequestMapping(value = "/{speechId}/{userId}", method = RequestMethod.GET)
-    public ResponseEntity<SpeechRating> getSpeechRating(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId) {
+    @RequestMapping(value = "/{userId}/{speechId}", method = RequestMethod.GET)
+    public ResponseEntity<SpeechRating> getSpeechRating(@PathVariable("userId") String userId, @PathVariable("speechId") String speechId) {
         System.out.println("in get speechrating controller");
         SpeechRating speechRating = speechRatingService.getRating(userId, speechId);
         System.out.println("speech rating: " + speechRating.getRating() + " for userId " + userId);
@@ -32,7 +32,7 @@ public class SpeechRatingController {
 
 
 
-    @RequestMapping(value = "/{speechId}/{userId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{userId}/{speechId}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void rateSpeech(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId,
                            @RequestBody SpeechRating speechRating) {

@@ -103,5 +103,5 @@ public class Speech {
     public void setEventId(String eventId) {
         this.eventId = eventId;
     }
-    
+
 }

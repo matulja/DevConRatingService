@@ -50,8 +50,12 @@ public class SpeechService {
     }
 
     public void deleteSpeech(String speechId) {
-        //TODO delete all speechratings with speech
         System.out.println("delete speech");
+        Speech speech = speechRepository.findOne(speechId);
+        List<SpeechRating> ratingsForSpeech = speechRatingRepository.findBySpeech(speech);
+        for (SpeechRating speechRating:ratingsForSpeech) {
+            speechRatingRepository.delete(speechRating);
+        }
         speechRepository.delete(speechId);
     }
 }

@@ -32,15 +32,15 @@ public class DevConRatingServiceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		/*speechRatingRepository.deleteAll();
-		speechRepository.deleteAll();*/
+		//speechRatingRepository.deleteAll();
+		//speechRepository.deleteAll();
 
-		List<SpeechRating>speechRatings = speechRatingRepository.findBySpeech(speechRepository.findBySpeechId("588511dc06d4cd204870e090"));
+/*		List<SpeechRating>speechRatings = speechRatingRepository.findBySpeech(speechRepository.findBySpeechId("588511dc06d4cd204870e090"));
 
 		for (SpeechRating speechRating: speechRatings) {
 			speechRating.setRating(3);
 			speechRatingRepository.save(speechRating);
-		}
+		}*/
 
 
 

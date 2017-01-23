@@ -1,10 +1,6 @@
 package com.senacor.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.bson.types.ObjectId;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,7 +24,7 @@ public class Speech {
     private String speaker;
     private String speakerInfo;
     private String speechSummary;
-    private String eventID;
+    private String eventId;
 
 
     public Speech() {
@@ -100,12 +96,12 @@ public class Speech {
         return speechId;
     }
 
-    public String getEventID() {
-        return eventID;
+    public String getEventId() {
+        return eventId;
     }
 
-    public void setEventID(String eventID) {
-        this.eventID = eventID;
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public List<Speech> insertSpeechSorted(List<Speech> speeches) {

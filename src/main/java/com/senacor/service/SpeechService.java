@@ -50,6 +50,7 @@ public class SpeechService {
     }
 
     public void deleteSpeech(String speechId) {
+        //TODO delete all speechratings with speech
         System.out.println("delete speech");
         speechRepository.delete(speechId);
     }

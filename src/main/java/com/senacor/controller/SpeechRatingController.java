@@ -1,11 +1,13 @@
 package com.senacor.controller;
 
+import com.senacor.model.Speech;
 import com.senacor.model.SpeechRating;
 import com.senacor.service.SpeechRatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 /**
  * Created by Marynasuprun on 10.01.2017.
@@ -35,8 +37,8 @@ public class SpeechRatingController {
     @RequestMapping(value = "/{userId}/{speechId}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void rateSpeech(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId,
-                           @RequestBody SpeechRating speechRating) {
-
+                           @RequestParam("rating") int speechRating) {
+        System.out.println("in put speechrating controller");
         speechRatingService.addRating(speechRating, speechId, userId);
     }
 

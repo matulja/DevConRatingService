@@ -25,9 +25,9 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 @Service
 public class SpeechRatingService {
 
-    SpeechRatingRepository speechRatingRepository;
-    NaturalPersonRepository naturalPersonRepository;
-    SpeechRepository speechRepository;
+    private SpeechRatingRepository speechRatingRepository;
+    private NaturalPersonRepository naturalPersonRepository;
+    private SpeechRepository speechRepository;
 
 
     @Autowired
@@ -47,7 +47,7 @@ public class SpeechRatingService {
             //speech = ...
             //save speech in own speech repo
             System.out.println("speech does not exist... ");
-            speechRepository.save(speech);
+            //speechRepository.save(speech);
         }
 
         NaturalPerson naturalPerson = naturalPersonRepository.findByUserId(userId);

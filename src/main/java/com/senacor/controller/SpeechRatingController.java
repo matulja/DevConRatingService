@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/rating")
 public class SpeechRatingController {
 
-    SpeechRatingService speechRatingService;
+    private SpeechRatingService speechRatingService;
 
 
     @Autowired
@@ -29,7 +29,7 @@ public class SpeechRatingController {
         System.out.println("in get speechrating controller");
         SpeechRating speechRating = speechRatingService.getRating(userId, speechId);
         System.out.println("speech rating: " + speechRating.getRating() + " for userId " + userId);
-        return new ResponseEntity<SpeechRating>(speechRating, HttpStatus.OK);
+        return new ResponseEntity<>(speechRating, HttpStatus.OK);
     }
 
 

@@ -17,9 +17,9 @@ import java.util.List;
 @Service
 public class SpeechService {
 
-    SpeechRepository speechRepository;
-    SpeechRatingRepository speechRatingRepository;
-    NaturalPersonRepository naturalPersonRepository;
+    private SpeechRepository speechRepository;
+    private SpeechRatingRepository speechRatingRepository;
+    private NaturalPersonRepository naturalPersonRepository;
 
     @Autowired
     public SpeechService(SpeechRepository speechRepository, SpeechRatingRepository speechRatingRepository,
@@ -37,7 +37,7 @@ public class SpeechService {
             SpeechRating speechRating = new SpeechRating();
             speechRating.setNaturalPerson(naturalPerson);
             speechRating.setSpeech(speech);
-            speechRating.setRating(new Integer(0));
+            speechRating.setRating(0);
             speechRatingRepository.save(speechRating);
         }
         speechRepository.save(speech);

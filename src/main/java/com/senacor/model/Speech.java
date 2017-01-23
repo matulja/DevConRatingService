@@ -103,21 +103,5 @@ public class Speech {
     public void setEventId(String eventId) {
         this.eventId = eventId;
     }
-
-    public List<Speech> insertSpeechSorted(List<Speech> speeches) {
-        boolean wasAdded = false;
-        for (int i = 0; i < speeches.size(); i++) {
-            System.out.println(i + ". round in loop");
-            System.out.println(speeches.get(i).getStartTime().isAfter(this.getStartTime()));
-            if (speeches.get(i).getStartTime().isAfter(this.getStartTime())) {
-                speeches.add(i, this);
-                wasAdded = true;
-                break;
-            }
-        }
-        if (!wasAdded) {
-            speeches.add(this);
-        }
-        return speeches;
-    }
+    
 }

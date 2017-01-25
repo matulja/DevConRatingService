@@ -28,18 +28,9 @@ public class SpeechService {
         this.speechRatingRepository = speechRatingRepository;
         this.naturalPersonRepository = naturalPersonRepository;
     }
+
     public void createSpeech(Speech speech) {
         System.out.println("saving new speech");
-
-        List<NaturalPerson> allUsers = naturalPersonRepository.findAll();
-        System.out.println("size of all Users list = " + allUsers.size());
-        for (NaturalPerson naturalPerson: allUsers) {
-            SpeechRating speechRating = new SpeechRating();
-            speechRating.setNaturalPerson(naturalPerson);
-            speechRating.setSpeech(speech);
-            speechRating.setRating(0);
-            speechRatingRepository.save(speechRating);
-        }
         speechRepository.save(speech);
     }
 
@@ -51,11 +42,10 @@ public class SpeechService {
 
     public void deleteSpeech(String speechId) {
         System.out.println("delete speech");
-        Speech speech = speechRepository.findOne(speechId);
-        List<SpeechRating> ratingsForSpeech = speechRatingRepository.findBySpeech(speech);
-        for (SpeechRating speechRating:ratingsForSpeech) {
-            speechRatingRepository.delete(speechRating);
+        for (SpeechRating sr : speechRatingRepository.findBySpeechId(speechId)) {
+            speechRatingRepository.delete(sr);
         }
-        speechRepository.delete(speechId);
+        Speech speech = speechRepository.findOne(speechId);
+        speechRepository.delete(speech);
     }
 }

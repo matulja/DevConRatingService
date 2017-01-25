@@ -15,7 +15,12 @@ import java.util.UUID;
 @Repository
 public interface SpeechRatingRepository extends MongoRepository<SpeechRating, UUID> {
 
-    SpeechRating findByNaturalPersonAndSpeech(NaturalPerson naturalPerson, Speech speech);
+    // SpeechRating findByNaturalPersonAndSpeech(NaturalPerson naturalPerson, Speech speech);
 
-    List<SpeechRating> findBySpeech(Speech speech);
+    //List<SpeechRating> findBySpeech(Speech speech);
+
+    SpeechRating findBySpeechIdAndUserId(String speechId, String userId);
+
+    List<SpeechRating> findBySpeechId(String speechId);
+
 }

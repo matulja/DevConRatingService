@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
@@ -38,33 +39,35 @@ public class SpeechRatingService {
         this.speechRepository = speechRepository;
     }
 
-    public SpeechRating getRating(String userId, String speechId) {
+    public SpeechRating getRating(String speechId, String userId) {
 
         //first check if speech already in speechRepository
-        Speech speech = speechRepository.findBySpeechId(speechId);
-        if (speech == null) {
+       // Speech speech = speechRepository.findBySpeechId(speechId);
+        /*if (speech == null) {
             //TODO if speech not yet in repository, get speech from eventservice and create speechrating for all users
             //speech = ...
             //save speech in own speech repo
             System.out.println("speech does not exist... ");
             //speechRepository.save(speech);
-        }
+        }*/
 
-        NaturalPerson naturalPerson = naturalPersonRepository.findByUserId(userId);
-        SpeechRating savedRating = speechRatingRepository.findByNaturalPersonAndSpeech(naturalPerson, speech);
-        Link selflink = linkTo(SpeechRatingController.class).slash(naturalPerson.getUserId() + "/"
-                + savedRating.getSpeechRatingId().toString()).withSelfRel();
-        savedRating.add(selflink);
+        //NaturalPerson naturalPerson = naturalPersonRepository.findByUserId(userId);
+        SpeechRating savedRating = speechRatingRepository.findBySpeechIdAndUserId(speechId, userId);
+        if (savedRating != null) {
+            Link selflink = linkTo(SpeechRatingController.class).slash(savedRating.getSpeechRatingId().toString()).withSelfRel();
+            savedRating.add(selflink);
+        }
         return savedRating;
     }
 
-    public void addRating(int speechRating, String speechId, String userId) {
+    public SpeechRating addRating(SpeechRating speechRating) {
         System.out.println("in speechrating service... trying to put new value");
-        NaturalPerson naturalPerson = naturalPersonRepository.findByUserId(userId);
-        Speech speech = speechRepository.findOne(speechId);
-        SpeechRating savedRating = speechRatingRepository.findByNaturalPersonAndSpeech(naturalPerson, speech);
-        savedRating.setRating(speechRating);
+        speechRatingRepository.save(speechRating);
         //savedRating.setTimestamp(speechRating.getTimestamp());
-        speechRatingRepository.save(savedRating);
+        return speechRatingRepository.findOne(speechRating.getSpeechRatingId());
+    }
+
+    public void editRating(SpeechRating speechRating) {
+        speechRatingRepository.save(speechRating);
     }
 }

@@ -18,16 +18,11 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 public class SpeechRatingService {
 
     private SpeechRatingRepository speechRatingRepository;
-    private NaturalPersonRepository naturalPersonRepository;
-    private SpeechRepository speechRepository;
 
 
     @Autowired
-    public SpeechRatingService(SpeechRatingRepository speechRatingRepository, NaturalPersonRepository naturalPersonRepository,
-                               SpeechRepository speechRepository) {
+    public SpeechRatingService(SpeechRatingRepository speechRatingRepository) {
         this.speechRatingRepository = speechRatingRepository;
-        this.naturalPersonRepository = naturalPersonRepository;
-        this.speechRepository = speechRepository;
     }
 
     public SpeechRating getRating(String speechId, String userId) {

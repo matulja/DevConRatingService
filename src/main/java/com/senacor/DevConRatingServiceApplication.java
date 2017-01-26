@@ -11,14 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DevConRatingServiceApplication implements CommandLineRunner {
 
-	@Autowired
-	SpeechRepository speechRepository;
 
 	@Autowired
 	SpeechRatingRepository speechRatingRepository;
-
-	@Autowired
-	NaturalPersonRepository naturalPersonRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DevConRatingServiceApplication.class, args);
@@ -27,7 +22,7 @@ public class DevConRatingServiceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 //		speechRatingRepository.deleteAll();
-//		speechRepository.deleteAll();
+
 
 /*		List<SpeechRating>speechRatings = speechRatingRepository.findBySpeech(speechRepository.findBySpeechId("588511dc06d4cd204870e090"));
 

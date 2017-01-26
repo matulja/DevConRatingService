@@ -24,6 +24,7 @@ public class EventRating extends ResourceSupport implements Serializable{
     private int contentRating;
     private String suggestions;
     private String eventId;
+    private String userId;
     private LocalTime timestamp;
 
     public EventRating() {
@@ -94,5 +95,11 @@ public class EventRating extends ResourceSupport implements Serializable{
         this.contentRating = contentRating;
     }
 
+    public String getUserId() {
+        return userId;
+    }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 }

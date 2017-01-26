@@ -11,5 +11,6 @@ import java.util.UUID;
  */
 @Repository
 public interface EventRatingRepository extends MongoRepository<EventRating, UUID> {
-    public EventRating findByEventIdAndUserId(String eventId, String userId);
+
+    EventRating findByEventIdAndUserId(String eventId, String userId);
 }

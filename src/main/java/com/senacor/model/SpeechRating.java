@@ -20,10 +20,6 @@ public class SpeechRating extends ResourceSupport implements Serializable {
 
     @Id
     private UUID speechRatingId;
-    /*@JsonIgnore
-    private Speech speech;
-    @JsonIgnore
-    private NaturalPerson naturalPerson;*/
     private String userId;
     private String speechId;
     private LocalTime timestamp;
@@ -41,22 +37,6 @@ public class SpeechRating extends ResourceSupport implements Serializable {
     public void setSpeechRatingId(UUID speechRatingId) {
         this.speechRatingId = speechRatingId;
     }
-
-/*    public Speech getSpeech() {
-        return speech;
-    }
-
-    public void setSpeech(Speech speech) {
-        this.speech = speech;
-    }
-
-    public NaturalPerson getNaturalPerson() {
-        return naturalPerson;
-    }
-
-    public void setNaturalPerson(NaturalPerson naturalPerson) {
-        this.naturalPerson = naturalPerson;
-    }*/
 
     public String getUserId() {
         return userId;

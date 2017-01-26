@@ -14,7 +14,7 @@ import java.util.UUID;
  * Created by Marynasuprun on 10.01.2017.
  */
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/rating/speeches")
 public class SpeechRatingController {
 
     private SpeechRatingService speechRatingService;

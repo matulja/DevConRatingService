@@ -1,9 +1,7 @@
 package com.senacor;
 
 
-import com.senacor.repository.NaturalPersonRepository;
 import com.senacor.repository.SpeechRatingRepository;
-import com.senacor.repository.SpeechRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

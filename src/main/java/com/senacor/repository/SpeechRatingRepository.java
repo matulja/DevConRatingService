@@ -1,7 +1,5 @@
 package com.senacor.repository;
 
-import com.senacor.model.NaturalPerson;
-import com.senacor.model.Speech;
 import com.senacor.model.SpeechRating;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

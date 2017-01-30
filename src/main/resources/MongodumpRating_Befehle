@@ -1,0 +1,20 @@
+C:\Program Files\MongoDB\Server\3.2\bin
+------------------------------------------------------------------------------------
+Rating Befehle
+
+***mongoexport collections: speechRating, speechId, userId, rating und comment
+werden in cvs Format unter den Namen ratingSpeeches gespeichert***
+
+mongoexport --db rating --collection speechRating --csv --out c:\Database\ratingSpeeches.csv --fields speechId,userId,rating,comment
+
+***mongoexport speech Details (speechTitle, speech.startTime, speechendTime...) four speechId=ObjectId('5888ff7a47cea417f055a0f2')
+werden in cvs Format unter den Namen dataSpeechesId. gespeichert***
+
+mongoexport --db event --collection event --query "{'speeches._id':{'$eq':ObjectId('5888ff7a47cea417f055a0f2')}}" --type=csv
+--fields speeches --out "c:\Database\dataSpeechesId.csv"
+
+***mongoexport naturalPerson Details four userId=17, userId,lastname,firstname,position
+ werden in cvs Format unter den Namen dataUserId gespeichert***
+
+mongoexport --db Users --collection naturalPerson --query "{'userId':{'$eq':'17'}}" --type=csv
+--fields userId,lastname,firstname,position --out "c:\Database\dataUserId.csv"

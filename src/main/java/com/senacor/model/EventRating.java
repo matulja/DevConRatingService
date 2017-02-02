@@ -1,5 +1,6 @@
 package com.senacor.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.hateoas.Link;
@@ -102,4 +103,6 @@ public class EventRating extends ResourceSupport implements Serializable{
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+
 }

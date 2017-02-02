@@ -37,10 +37,13 @@ public class EventRatingController {
         }
     }
 
-    @RequestMapping(value = "/{userId}/{eventId}/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/{eventId}/{userId}/add", method = RequestMethod.POST)
     public ResponseEntity<EventRating> rateSpeech(@PathVariable("eventId") String eventId, @PathVariable("userId") String userId,
                                                    @RequestBody EventRating eventRating) {
         System.out.println("in post eventrating controller");
+        System.out.println("information rating = " + eventRating.getInformationRating());
+        eventRating.setEventId(eventId);
+        eventRating.setUserId(userId);
         EventRating newRating = eventRatingService.addRating(eventRating);
         return new ResponseEntity<>(newRating, HttpStatus.CREATED);
 

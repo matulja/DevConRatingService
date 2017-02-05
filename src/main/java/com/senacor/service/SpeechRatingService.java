@@ -26,18 +26,6 @@ public class SpeechRatingService {
     }
 
     public SpeechRating getRating(String speechId, String userId) {
-
-        //first check if speech already in speechRepository
-       // Speech speech = speechRepository.findBySpeechId(speechId);
-        /*if (speech == null) {
-            //TODO if speech not yet in repository, get speech from eventservice and create speechrating for all users
-            //speech = ...
-            //save speech in own speech repo
-            System.out.println("speech does not exist... ");
-            //speechRepository.save(speech);
-        }*/
-
-        //NaturalPerson naturalPerson = naturalPersonRepository.findByUserId(userId);
         SpeechRating savedRating = speechRatingRepository.findBySpeechIdAndUserId(speechId, userId);
         if (savedRating != null) {
             Link selflink = linkTo(SpeechRatingController.class).slash(savedRating.getSpeechRatingId().toString()).withSelfRel();
@@ -47,9 +35,7 @@ public class SpeechRatingService {
     }
 
     public SpeechRating addRating(SpeechRating speechRating) {
-        System.out.println("in speechrating service... trying to put new value");
         speechRatingRepository.save(speechRating);
-        //savedRating.setTimestamp(speechRating.getTimestamp());
         return speechRatingRepository.findOne(speechRating.getSpeechRatingId());
     }
 

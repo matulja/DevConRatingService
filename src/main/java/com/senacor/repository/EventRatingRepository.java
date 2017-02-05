@@ -3,7 +3,6 @@ package com.senacor.repository;
 import com.senacor.model.EventRating;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.UUID;
 
 /**

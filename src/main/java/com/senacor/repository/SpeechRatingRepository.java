@@ -3,8 +3,6 @@ package com.senacor.repository;
 import com.senacor.model.SpeechRating;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -18,7 +16,4 @@ public interface SpeechRatingRepository extends MongoRepository<SpeechRating, UU
     //List<SpeechRating> findBySpeech(Speech speech);
 
     SpeechRating findBySpeechIdAndUserId(String speechId, String userId);
-
-    List<SpeechRating> findBySpeechId(String speechId);
-
 }

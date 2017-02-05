@@ -24,19 +24,16 @@ public class EventRatingService {
 
 
     public EventRating getRating(String eventId, String userId) {
-        EventRating eventRating = eventRatingRepository.findByEventIdAndUserId(eventId, userId);
-        if (eventRating != null) {
-            System.out.println("eventrating is not null");
-            Link selflink = linkTo(EventRatingController.class).slash(eventRating.getEventRatingId().toString()).withSelfRel();
-            eventRating.add(selflink);
+        EventRating savedRating = eventRatingRepository.findByEventIdAndUserId(eventId, userId);
+        if (savedRating != null) {
+            Link selflink = linkTo(EventRatingController.class).slash(savedRating.getEventRatingId().toString()).withSelfRel();
+            savedRating.add(selflink);
         }
-        return eventRating;
+        return savedRating;
     }
 
     public EventRating addRating(EventRating eventRating) {
-        System.out.println("in eventrating service... trying to put new value");
         eventRatingRepository.save(eventRating);
-        System.out.println("this is the eventRating: " + eventRating.toString());
         return eventRating;
     }
 

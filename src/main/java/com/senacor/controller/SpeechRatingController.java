@@ -27,7 +27,10 @@ public class SpeechRatingController {
     @RequestMapping(value = "/{speechId}/{userId}", method = RequestMethod.GET)
     public ResponseEntity<SpeechRating> getSpeechRating(@PathVariable("speechId") String speechId, @PathVariable("userId") String userId) {
         SpeechRating speechRating = speechRatingService.getRating(speechId, userId);
+        System.out.println("received user ID: " + userId);
+        System.out.println("received speech ID: " + speechId);
         if (speechRating != null) {
+            System.out.println("speechrating found");
             return new ResponseEntity<>(speechRating, HttpStatus.OK);
         }else{
             return new ResponseEntity<SpeechRating>(HttpStatus.NO_CONTENT);
